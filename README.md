@@ -68,3 +68,11 @@ This work is licensed under a
 [cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
 [cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
+
+
+# Notes
+
+Ah yes HID and USB in generally was not an easy thing to figure out. As a starter I found these two websites extremely useful: https://www.beyondlogic.org/usbnutshell/usb1.shtml and https://www.usbmadesimple.co.uk/ums_4.htm. I read through all the chapters on both sites to get an overview of how USB works (i.e. the hierarchy of the descriptors etc.), which is the basics for understanding the HID spec. For HID specifically I mostly read the spec directly https://www.usb.org/sites/default/files/hid1_11.pdf, although not really a fan of their writing. What I found the most useful is the example implementation in the appendix, and I traced back anything I don't know in the actual documentation sections of the spec. In the end I think I went though the HID spec end to end for no less than 10 times. Another really useful source is the tinyusb examples as well as source code, and their report descriptor templates. In terms of actually creating the descriptor and sending the keycode, I just used tinyusb since I don't really want to handle the USB interrupts directly. I did create my own keyboard report descriptor in the end as I need to support both bootmode and NKRO. It might look daunting, but you can find all the information you need about HID in the spec.
+
+
+https://www.reddit.com/r/raspberry_pi/comments/wcf03c/two_months_of_work_finally_comes_to_fruition_the/
